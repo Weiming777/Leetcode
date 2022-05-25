@@ -132,3 +132,107 @@ class Solution {
 }
 ```
 
+
+
+
+
+# 34.Find First and Last Position of Element in Sorted Array
+
+Given an array of integers `nums` sorted in non-decreasing order, find the starting and ending position of a given `target` value.
+
+If `target` is not found in the array, return `[-1, -1]`.
+
+You must write an algorithm with `O(log n)` runtime complexity.
+
+ 
+
+**Example 1:**
+
+```java
+Input: nums = [5,7,7,8,8,10], target = 8
+Output: [3,4]
+```
+
+**Example 2:**
+
+```java
+Input: nums = [5,7,7,8,8,10], target = 6
+Output: [-1,-1]
+```
+
+**Example 3:**
+
+```java
+Input: nums = [], target = 0
+Output: [-1,-1]
+```
+
+
+
+## Solution: Binary Search
+
+Using two times binary search to find the left bound and right bound.
+
+```java
+class Solution{
+  public int[] searchRange(int[] nums; int target){
+    int left = findLeftBound(nums, target);
+    
+    if (left == -1){
+      return new int[] {-1,-1};
+    }
+   
+    int right = findRightBound(nums, target);
+    
+    return new int[] {left, right};
+  }
+  
+  
+  int findLeftBound(int[] nums, int target){
+ 		int pivot;
+    int right = nums.length - 1;
+    int left = 0;
+    while(left <= right){
+      pivot = (right - left) / 2 + left;
+      if (nums[pivot] == target){
+        // 这里先判断left是否等于pivot， 可以避免后面（pivot - 1）越界的情况发生。
+        // 如果false，代表，这里既不是左边界，数组中也不只这一个target数字。
+        // This means "left" is not left bound and this operate can avoid out of bound of nums array.
+        // "if" judges is this pivot is left bound or is there has any same value with target in the right of 							pivot.
+        if (left == pivot || nums[pivot - 1] != target){
+          return pivot;
+        } else {
+          right = pivot - 1;
+        }
+      } else if (nums[pivot] > target){
+        right = pivot - 1;
+      } else {
+        left = pivot + 1;
+      }
+    }
+    return -1;
+  }
+  
+  int findRightBound(int[] nums, int target){
+ 		int pivot;
+    int right = nums.length - 1;
+    int left = 0;
+    while(left <= right){
+      pivot = (right - left) / 2 + left;
+      if (nums[pivot] == target){
+        if (right == pivot || nums[pivot + 1] != target){
+          return pivot;
+        } else {
+          left = pivot + 1;
+        }
+      } else if (nums[pivot] > target){
+        right = pivot - 1;
+      } else {
+        left = pivot + 1;
+      }
+    }
+    return -1;
+  }
+}
+```
+
