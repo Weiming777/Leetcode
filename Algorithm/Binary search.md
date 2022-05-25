@@ -30,7 +30,7 @@ Explanation: 2 does not exist in nums so return -1
 
 ## Solution
 
-Time complexity: O(n).
+Time complexity: O(log n).
 
 ```java
 class Solution {
@@ -90,6 +90,8 @@ Output: 4
 
 Because this is a **ascending** array, so I can just search this array and if this array do not have this number, I can put this number in the "left".
 
+Time complexity: O(log n).
+
 ```java
 class Solution {
     public int searchInsert(int[] nums, int target) {
@@ -114,6 +116,8 @@ class Solution {
 
 
 ## Solution: Brute Force
+
+Time complexity: O(n).
 
 ```java
 class Solution {
