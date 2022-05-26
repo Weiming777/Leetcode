@@ -2,7 +2,7 @@
 
 同时题目还强调数组中无重复元素，因为一旦有重复元素，使用二分查找法返回的元素下标可能不是唯一的。
 
-# 704.Binary Search
+# 704. Binary Search
 
 Given an array of integers `nums` which is sorted in ascending order, and an integer `target`, write a function to search `target` in `nums`. If `target` exists, then return its index. Otherwise, return `-1`.
 
@@ -55,7 +55,7 @@ class Solution {
 
 
 
-# 35.Search Insert Position
+# 35. Search Insert Position
 
 Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
 
@@ -136,7 +136,7 @@ class Solution {
 
 
 
-# 34.Find First and Last Position of Element in Sorted Array
+# 34. Find First and Last Position of Element in Sorted Array
 
 Given an array of integers `nums` sorted in non-decreasing order, find the starting and ending position of a given `target` value.
 
