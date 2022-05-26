@@ -175,7 +175,7 @@ Using two times binary search to find the left bound and right bound.
 
 ```java
 class Solution{
-  public int[] searchRange(int[] nums; int target){
+  public int[] searchRange(int[] nums, int target){
     int left = findLeftBound(nums, target);
     
     if (left == -1){
@@ -229,6 +229,51 @@ class Solution{
         right = pivot - 1;
       } else {
         left = pivot + 1;
+      }
+    }
+    return -1;
+  }
+}
+```
+
+或者换一种写法，加一个boolean的变量，用于区分寻找左右边界的过程。
+
+```java
+class Solution {
+  public int[] searchRange(int[] nums, int target){
+    int leftBound = findBound(nums, target, true);
+    
+    if (leftBound == -1){
+      return new int[] {-1, -1};
+    }
+    
+    int rightBound = findBound(nums, target, false);
+    
+    return new int[] {leftBound, rightBound};
+  }
+  
+  int findBound(int[] nums, int target, boolean isFirst){
+    int pivot;
+    int right = nums.length - 1;
+    int left = 0;
+    while(left <= right){
+      pivot = (right - left) / 2 + left;
+      if (nums[pivot] == target){
+        if (isFirst) {
+          if (pivot == left || nums[pivot - 1] != target){
+            return pivot;
+          }
+          right = pivot - 1;
+        } else {
+          if (pivot == right || nums[pivot + 1] != target){
+            return pivot;
+          }
+          left = pivot + 1;
+        }
+      } else if (nums[pivot] < target){
+        left = pivot + 1;
+      } else if (nums[pivot] > target){
+        right = pivot - 1;
       }
     }
     return -1;
