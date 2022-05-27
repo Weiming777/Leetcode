@@ -146,3 +146,52 @@ class Solution{
 }
 ```
 
+
+
+# 283.Move Zeroes
+
+Given an integer array `nums`, move all `0`'s to the end of it while maintaining the relative order of the non-zero elements.
+
+**Note** that you must do this in-place without making a copy of the array.
+
+ 
+
+**Example 1:**
+
+```java
+Input: nums = [0,1,0,3,12]
+Output: [1,3,12,0,0]
+```
+
+**Example 2:**
+
+```java
+Input: nums = [0]
+Output: [0]
+```
+
+
+
+## Solution: Two Pointers
+
+```java
+class Solution {
+  public void moveZeroes(int[] nums) {
+    int fastPointer = 1;
+    int slowPointer = 0;
+    for (; fastPointer < nums.length && slowPointer < nums.length; ){
+      if (nums[slowPointer] == 0){
+        nums[slowPointer] = nums[fastPointer];
+        nums[fastPointer] = 0;
+      }
+      if (nums[slowPointer] == 0){
+        fastPointer++;
+      } else {
+        fastPointer++;
+        slowPointer++;
+      }
+    }
+  }
+}
+```
+
