@@ -285,3 +285,27 @@ class Solution {
 }
 ```
 
+
+
+## Solution 2: Build String
+
+```java
+class Solution {
+    public boolean backspaceCompare(String S, String T) {
+        return build(S).equals(build(T));
+    }
+    
+    String build(String s) {
+        Stack<Character> s2 = new Stack();
+        for (char c: s.toCharArray()){
+            if (c != '#') {
+                s2.push(c);
+            } else if (!s2.empty()) {
+                s2.pop();
+            }
+        }
+        return String.valueOf(s2);
+    }
+}
+```
+
