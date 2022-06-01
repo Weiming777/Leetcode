@@ -367,6 +367,50 @@ class Solution {
 ## Solution 2: Two Pointer
 
 ```java
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+      	int[] result = new int[nums.length];
+      	int left = 0;
+      	int right = nums.length - 1;
+      	int temp = 0;
+      	int i = nums.length - 1;
+      
+        while (left <= right) {
+          if (Math.abs(nums[left]) < Math.abs(nums[right])) {
+            temp = nums[right];
+            right --;
+          } else if (Math.abs(nums[left]) >= Math.abs(nums[right])) {
+            temp = nums[left];
+            left ++;
+          }
+          result[i] = temp * temp;
+          i--;
+        }
+      
+      	return result;
+    }
+}
+```
 
+
+
+
+
+## Solution 3: using Arrays.sort() function
+
+```java
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        int[] temp = new int[nums.length];
+        
+        for (int i = 0; i < nums.length; i++){
+            temp[i] = nums[i] * nums[i];
+        }
+        
+        Arrays.sort(temp);
+        
+        return temp;
+    }
+}
 ```
 
