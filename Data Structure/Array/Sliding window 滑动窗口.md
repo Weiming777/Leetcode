@@ -185,6 +185,8 @@ class Solution {
         int tl = t.length();
         if (tl > sl || tl == 0 || sl == 0) return "";
         
+        if (s.equals(t)) return t;
+        
         int left = 0;
         int right = 0;
         int ansLeft = 0;
@@ -215,23 +217,25 @@ class Solution {
             right++;
             
             while (i == 0) {
-                ansLeft = left;   // ??????????????????
-                ansRight = right;
                 
                 char temp2 = s.charAt(left);
                 
                 if (map.containsKey(temp2) && map.get(temp2) == 0) {
-                    if (ans > (right - left + 1)) {
-                        ans = right - left + 1;
+                    if (ans >= (right - left )) {
+                        ans = right - left ;
                         ansLeft = left;
                         ansRight = right;
                     }
-                    //"cabwefgewcwaefgcf""cae"
                     left++;
                     i++;
                     map.replace(temp2, map.get(temp2) + 1);
                 } else if (map.containsKey(temp2)) {
                     map.replace(temp2, map.get(temp2) + 1);
+                    if (ans >= (right - left )) {
+                        ans = right - left ;
+                        ansLeft = left;
+                        ansRight = right;
+                    }
                     left++;
                 } else {
                     left++;
@@ -242,6 +246,7 @@ class Solution {
         for (i = ansLeft; i < ansRight; i++) {
             result += s.charAt(i);
         }
+        
         return result;
     }
 }
