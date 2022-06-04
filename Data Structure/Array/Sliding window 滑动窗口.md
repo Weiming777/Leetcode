@@ -215,7 +215,7 @@ class Solution {
             right++;
             
             while (i == 0) {
-                ansLeft = left;
+                ansLeft = left;   // ??????????????????
                 ansRight = right;
                 
                 char temp2 = s.charAt(left);
