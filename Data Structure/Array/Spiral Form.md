@@ -65,3 +65,79 @@ class Solution {
 }
 ```
 
+
+
+
+
+# 54.Spiral Matrix
+
+Given an `m x n` `matrix`, return *all elements of the* `matrix` *in spiral order*.
+
+ 
+
+**Example 1:**
+
+![img](https://assets.leetcode.com/uploads/2020/11/13/spiral1.jpg)
+
+```
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+```
+
+**Example 2:**
+
+![img](https://assets.leetcode.com/uploads/2020/11/13/spiral.jpg)
+
+```java
+Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+```
+
+
+
+
+
+## Solution 1: Spiral Form
+
+```java
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        int rows = matrix.length;
+        int columns = matrix[0].length;
+            
+        List<Integer> res = new ArrayList<>();
+        
+        int up = 0;
+        int down = rows - 1;
+        int left = 0;
+        int right = columns - 1;
+        
+        while (res.size() < rows * columns) {
+            for (int col = left; col <= right; col++) {
+                res.add(matrix[up][col]);
+            }
+            for (int row = up + 1; row <= down; row++) {
+                res.add(matrix[row][right]);
+            }
+            if (up != down) {
+                for (int col = right - 1; col >= left; col--) {
+                    res.add(matrix[down][col]);
+                }
+            }
+            if (left != right) {
+                for (int row = down - 1; row > up; row--) {
+                    res.add(matrix[row][left]);
+                }
+            }
+            
+            left++;
+            right--;
+            up++;
+            down--;
+        }
+        
+        return res;
+    }
+}
+```
+
