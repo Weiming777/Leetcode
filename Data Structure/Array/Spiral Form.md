@@ -1,3 +1,11 @@
+# 主要思想：
+
+当为标准正方形时，可以按照59solution的解法来。
+
+当为不规则时，则需要使用四个常量来记录matrix的上下左右四个边界。同时在每转半圈后，在检查从右下到左下时，需要检查是否在同一行遍历，如果时，则重复了，续跳过；从左下到左上同样需要检测。
+
+
+
 # 59.Spiral Matrix II
 
 Given a positive integer `n`, generate an `n x n` `matrix` filled with elements from `1` to `n2` in spiral order.
