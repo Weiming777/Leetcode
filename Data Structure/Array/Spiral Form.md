@@ -119,11 +119,13 @@ class Solution {
             for (int row = up + 1; row <= down; row++) {
                 res.add(matrix[row][right]);
             }
+            // 保证不在同一行
             if (up != down) {
                 for (int col = right - 1; col >= left; col--) {
                     res.add(matrix[down][col]);
                 }
             }
+            // 保证不在同一列
             if (left != right) {
                 for (int row = down - 1; row > up; row--) {
                     res.add(matrix[row][left]);
