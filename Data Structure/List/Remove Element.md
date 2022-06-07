@@ -33,6 +33,8 @@ Output: []
 
 哨兵Node
 
+因为只需要删除指定的val，因此只要到和val一样的node时将前序node的后指针.next指向val后面的node即可。
+
 ```java
 /**
  * Definition for singly-linked list.
