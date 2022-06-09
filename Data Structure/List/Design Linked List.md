@@ -36,7 +36,7 @@ myLinkedList.get(1);              // return 3
 
 
 
-
+# **我觉得这题头尾结点添加是错的。**
 
 ## Solution: 
 
