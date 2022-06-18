@@ -29,9 +29,11 @@ Output: [1]
 
 
 
-## Solution 1: Directly swap two node.next
+## Solution 1: Directly swap two node's pointer
 
 注意：递归法，因此两个交换的node，交换到后面的node，的next，应该是后面数据交换完的first.next。
+
+Designing by using pointer.
 
 ```java
 /**
@@ -55,6 +57,36 @@ class Solution {
         secondNode.next = firstNode;
         
         return secondNode;
+    }
+}
+```
+
+
+
+## Solution 2: Swap two node's value
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) return head;
+        
+        int temp = head.val;
+        head.val = head.next.val;
+        head.next.val = temp;
+        
+        swapPairs(head.next.next);
+        
+        return head;
     }
 }
 ```
