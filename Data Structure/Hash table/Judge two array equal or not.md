@@ -46,6 +46,8 @@ class Solution {
 
 ## Solution 2: Hash table (counter)
 
+注意：调用String.length()，记住要加括号！
+
 ```java
 class Solution {
     public boolean isAnagram(String s, String t) {
