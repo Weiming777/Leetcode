@@ -219,3 +219,129 @@ class Solution {
 }
 ```
 
+
+
+## Solution 2: HashSet
+
+使用HashSet避免重复现象出现。
+
+```java
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        HashSet<List<Integer>> hash = new HashSet<>();
+        
+        for (int i = 0; i < n; i++) {
+            int l = i + 1;
+            int r = n - 1;
+            while (l < r) {
+                if (nums[i] + nums[l] + nums[r] == 0) {
+                    hash.add(Arrays.asList(nums[i], nums[l], nums[r]));
+                    l++;
+                    r--;
+                } else if (nums[i] + nums[l] + nums[r] > 0) {
+                    r--;
+                } else {
+                    l++;
+                }
+            }
+        }
+        
+        List<List<Integer>> res = new ArrayList<>();
+        res.addAll(hash);
+        return res;
+    }
+}
+```
+
+
+
+
+
+# 18.4Sum
+
+Given an array `nums` of `n` integers, return *an array of all the **unique** quadruplets* `[nums[a], nums[b], nums[c], nums[d]]` such that:
+
+- `0 <= a, b, c, d < n`
+- `a`, `b`, `c`, and `d` are **distinct**.
+- `nums[a] + nums[b] + nums[c] + nums[d] == target`
+
+You may return the answer in **any order**.
+
+ 
+
+**Example 1:**
+
+```
+Input: nums = [1,0,-1,0,-2,2], target = 0
+Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+```
+
+**Example 2:**
+
+```
+Input: nums = [2,2,2,2,2], target = 8
+Output: [[2,2,2,2]]
+```
+
+
+
+
+
+## Solution 1: hashset 错的
+
+```java
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        HashSet<List<Integer>> hash = new HashSet<>();
+        
+        for (int k = 0; k < n; k++) {
+            int temp = target - nums[k];
+            for (int i = k + 1; i < n; i++) {
+            int l = i + 1;
+            int r = n - 1;
+            while (l < r) {
+                if (nums[i] + nums[l] + nums[r] == temp) {
+                    hash.add(Arrays.asList(nums[k], nums[i], nums[l], nums[r]));
+                    r--;
+                    l++;
+                } else if (nums[i] + nums[l] + nums[r] > temp) {
+                    r--;
+                } else {
+                    l++;
+                }
+            }
+            }
+        }
+        
+        
+        
+        List<List<Integer>> res = new ArrayList<>();
+        res.addAll(hash);
+        return res;
+    }
+}
+```
+
+
+
+错误原因，会越界
+
+```
+[1000000000,1000000000,1000000000,1000000000]
+-294967296
+```
+
+
+
+
+
+## Solution 2: Two Pointer
+
+```java
+
+```
+
