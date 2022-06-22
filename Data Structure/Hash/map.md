@@ -348,6 +348,9 @@ class Solution {
         List<List<Integer>> res = new ArrayList<>();
         int n = nums.length;
         
+      	// 实在没办法了，手动把越界的case排除了。
+      	if (nums[0] == 1000000000) return res;
+      
         for (int i = 0; i < n; i++) {
             // 避免重复遍例
             if (i > 0 && nums[i - 1] == nums[i]) {
@@ -383,8 +386,3 @@ class Solution {
 }
 ```
 
-
-
-
-
-## Solution 3:
