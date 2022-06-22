@@ -339,9 +339,52 @@ class Solution {
 
 
 
-## Solution 2: Two Pointer
+## Solution 2: Two Pointer 还是越界
 
 ```java
-
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        Arrays.sort(nums);
+        List<List<Integer>> res = new ArrayList<>();
+        int n = nums.length;
+        
+        for (int i = 0; i < n; i++) {
+            // 避免重复遍例
+            if (i > 0 && nums[i - 1] == nums[i]) {
+                continue;
+            }
+            
+            for (int j = i + 1; j < n; j++) {
+                if (j > i + 1 && nums[j - 1] == nums[j]){
+                    continue;
+                }
+                
+                int l = j + 1;
+                int r = n - 1;
+                while (l < r) {
+                    if (nums[i] + nums[j] + nums[l] + nums[r] == target) {
+                        res.add(Arrays.asList(nums[i], nums[j],nums[r], nums[l]));
+                        
+                        while(r > l && nums[l] == nums[l + 1]) l++;
+                        while(r > l && nums[r] == nums[r - 1]) r--;
+                        
+                        r--;
+                        l++;
+                    } else if (nums[i] + nums[j] + nums[l] + nums[r] > target){
+                        r--;
+                    } else {
+                        l++;
+                    }
+                }
+            }
+        }
+        return res;
+    }
+}
 ```
 
+
+
+
+
+## Solution 3:
