@@ -33,10 +33,15 @@ int[] getNext(int[] next,String modelString) {
 
 
 
-"next" array has three types:
+"NEXT" array has three types:
 
 1. As I code in the above, when we find different letter in the orginal string, we will know which letter in the model letter is different, and using this letter's index and min it one, to get the letter's "next" array number before it, and this number is which letter we should continue loop to match with original array. In this case, the loop number i of original string is not change, just the loop number j of model string is changed.
-2. After we got the "next" array, we can min each number of "next" array. In this case, when the letter of 
+2. After we got the "next" array, we can right shift each number of "next" array and set the next[0] equal zero. In this case, when the letter of model array is not match with original array, we can get this number's index as "next" array's index to find which letter in the model array we should back off and loop again.
+3. I do not make sense of this method. This method min each number of "next" array.
+
+
+
+Video: https://www.bilibili.com/video/BV1M5411j7Xx/?spm_id_from=333.788&vd_source=4de6d1b67eb3cce826c252d2eb75d494
 
 
 
