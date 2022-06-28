@@ -14,16 +14,20 @@ In this process, we need a "next" array to help us record prefix of model string
 
 ```java
 int[] getNext(int[] next,String modelString) {
+  	// Initialization
 		j = 0;
 		next[0] = 0;
 		
   	for (int i = 0; i < modelString.length(); i++) {
+      // Prefix different
       while (j > 0 && modelString.charAt(i) != modelString.charAt(j)) {
         j = next[j - 1];
       }
+      // Same prefix
       if (modelString.charAt(i) == modelString.charAt(j)) {
         j++;
       }
+      // Update next
       next[i] = j;
     }
   
