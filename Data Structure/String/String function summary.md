@@ -74,3 +74,43 @@ tip：
 而“\s+”则表示匹配任意多个上面的字符。另因为反斜杠在Java里是转义字符，所以在Java里，我们要这么用“\\\s+”.
 
 
+
+3. reverse字符串
+
+   ```java
+   Collections.reverse(list);
+   ```
+
+   
+
+4. 该方法是将数组转化成List集合的方法
+
+   ```java
+   List<String> list = Arrays.asList("a","b","c");
+   ```
+
+   
+
+   注意：
+
+   （1）该方法适用于对象型数据的数组（String、Integer...）
+
+   （2）该方法不建议使用于基本数据类型的数组（byte,short,int,long,float,double,boolean）
+
+   （3）该方法将数组与List列表链接起来：当更新其一个时，另一个自动更新
+
+   （4）不支持add()、remove()、clear()等方法
+
+   （5）该list的长度不可改变。
+
+   
+
+5. Java String join()
+
+   ```java
+   String.join(" ", list)
+   ```
+
+   join() 方法返回使用指定[分隔符](https://so.csdn.net/so/search?q=分隔符&spm=1001.2101.3001.7020)拼接一个字符串。在join() 方法中，为每个元素添加了分隔符。
+
+  	https://blog.csdn.net/sinat_41900642/article/details/108245225
