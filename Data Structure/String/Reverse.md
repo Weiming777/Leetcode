@@ -110,7 +110,7 @@ class Solution {
 }
 ```
 
-
+![image-20220628154730113](/Users/weimingqi/Library/Application Support/typora-user-images/image-20220628154730113.png)
 
 ## Solution 2: same with solution 1, but more concise.
 
