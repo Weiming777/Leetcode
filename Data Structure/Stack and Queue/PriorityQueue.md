@@ -27,8 +27,8 @@ Output: [1]
 ## Solution : PriorityQueue
 
 ```java
-  	//(n1, n2) -> map.get(n1) - map.get(n2)  or  （o1,o2) -> o1.getValue() - o2.getValue()  小顶堆
-  	//(n1, n2) -> map.get(n2) - map.get(n1)  or  （o1,o2) -> o2.getValue() - o1.getValue()  大顶堆
+  	//(n1, n2) -> map.get(n1) - map.get(n2)  or  （o1,o2) -> o1.getValue() - o2.getValue()  小顶堆  MinHeap
+  	//(n1, n2) -> map.get(n2) - map.get(n1)  or  （o1,o2) -> o2.getValue() - o1.getValue()  大顶堆  MaxHeap
 ```
 
 ```java
