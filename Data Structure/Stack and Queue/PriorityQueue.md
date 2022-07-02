@@ -27,6 +27,11 @@ Output: [1]
 ## Solution : PriorityQueue
 
 ```java
+  	//(n1, n2) -> map.get(n1) - map.get(n2)  or  （o1,o2) -> o1.getValue() - o2.getValue()  小顶堆
+  	//(n1, n2) -> map.get(n2) - map.get(n1)  or  （o1,o2) -> o2.getValue() - o1.getValue()  大顶堆
+```
+
+```java
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
         
@@ -37,6 +42,8 @@ class Solution {
         }
         
         Queue<Integer> heap = new PriorityQueue<>((n1, n2) -> map.get(n1) - map.get(n2));
+      	//(n1, n2) -> map.get(n1) - map.get(n2)  or  （o1,o2) -> o1.getValue() - o2.getValue()  小顶堆
+      	//(n1, n2) -> map.get(n2) - map.get(n1)  or  （o1,o2) -> o2.getValue() - o1.getValue()  大顶堆
         
         for (int n: map.keySet()) {
           heap.add(n);
