@@ -339,3 +339,104 @@ public List<Integer> rightSideView(TreeNode root) {
 }
 ```
 
+
+
+
+
+
+
+
+
+# 637.Average of Levels in Binary Tree
+
+Given the `root` of a binary tree, return *the average value of the nodes on each level in the form of an array*. Answers within `10-5` of the actual answer will be accepted.
+
+ 
+
+**Example 1:**
+
+![img](https://assets.leetcode.com/uploads/2021/03/09/avg1-tree.jpg)
+
+```
+Input: root = [3,9,20,null,null,15,7]
+Output: [3.00000,14.50000,11.00000]
+Explanation: The average value of nodes on level 0 is 3, on level 1 is 14.5, and on level 2 is 11.
+Hence return [3, 14.5, 11].
+```
+
+**Example 2:**
+
+![img](https://assets.leetcode.com/uploads/2021/03/09/avg2-tree.jpg)
+
+```
+Input: root = [3,9,20,15,7]
+Output: [3.00000,14.50000,11.00000]
+```
+
+
+
+
+
+
+
+## Solution 1: Iteration  BFS
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<Double> averageOfLevels(TreeNode root) {
+        List<Double> list = new ArrayList<>();
+        
+        if (root == null) {
+            return list;
+        }
+        
+        Queue<TreeNode> que = new LinkedList<>();
+        
+        que.offer(root);
+        while (!que.isEmpty()) {
+            double sum = 0.0;
+            int len = que.size();
+            int nums = que.size();
+            while (len > 0) {
+                TreeNode temp = que.poll();
+                sum += temp.val;
+                if (temp.left != null) {
+                    que.offer(temp.left);
+                }
+                if (temp.right != null) {
+                    que.offer(temp.right);
+                }
+                len--;
+            }
+            list.add(sum/nums);
+        }
+        return list;
+    }
+}
+```
+
+
+
+
+
+## Solution 2: Recursion   DFS
+
+```java
+
+```
+
