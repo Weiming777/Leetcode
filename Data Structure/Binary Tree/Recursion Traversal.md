@@ -159,7 +159,7 @@ Output: [1]
 
 
 
-## Solution :
+## Solution 1: Recursion
 
 ```java
 /**
@@ -192,6 +192,53 @@ class Solution {
         postorder(root.left, result);
         postorder(root.right, result);
         result.add(root.val);
+    }
+}
+```
+
+
+
+## Solution 2: Iteration
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+        
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            result.add(node.val);
+            
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+        }
+        Collections.reverse(result);
+        return result;
     }
 }
 ```
@@ -235,7 +282,7 @@ Output: [1]
 
 
 
-## Solution: 
+## Solution 1: Recursion
 
 ```java
 /**
@@ -268,6 +315,54 @@ class Solution {
         inorderTraversal(root.left, result);
         result.add(root.val);
         inorderTraversal(root.right, result);
+    }
+}
+```
+
+
+
+
+
+## Solution 2: Iteration
+
+```
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+        
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        
+        while (!stack.isEmpty() || cur != null) {
+            if (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            } else {
+                cur = stack.pop();
+                result.add(cur.val);
+                cur = cur.right;
+            }
+        }
+        
+        return result;
     }
 }
 ```
