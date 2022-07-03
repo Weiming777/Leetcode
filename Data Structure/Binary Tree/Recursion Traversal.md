@@ -61,7 +61,7 @@ class Solution {
           return;
         }
       	
-      	result.add(root);
+      	result.add(root.val);
       	preorder(root.left, result);
       	preorder(root.right, result);
     }
