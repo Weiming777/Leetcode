@@ -87,7 +87,7 @@ class Solution {
 
 
 
-## Solution 2: Recursion
+## Solution 2: Recursion  DF
 
 ```java
 /**
@@ -130,5 +130,91 @@ class Solution {
         checkFun01(node.right, deep);
     }
 }
+```
+
+
+
+
+
+# 107.Binary Tree Level Order Traversal II
+
+Given the `root` of a binary tree, return *the bottom-up level order traversal of its nodes' values*. (i.e., from left to right, level by level from leaf to root).
+
+ 
+
+**Example 1:**
+
+![img](https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg)
+
+```
+Input: root = [3,9,20,null,null,15,7]
+Output: [[15,7],[9,20],[3]]
+```
+
+**Example 2:**
+
+```
+Input: root = [1]
+Output: [[1]]
+```
+
+**Example 3:**
+
+```
+Input: root = []
+Output: []
+```
+
+
+
+
+
+## Solution 1: Iteration   BFS
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        iteration(root, result);
+        return result;
+    }
+    
+    public void iteration (TreeNode root, List<List<Integer>> result) {
+        if (root == null) return;
+        Queue<TreeNode> que = new LinkedList<>();
+        que.offer(root);
+        
+        while (!que.isEmpty()) {
+            List<Integer> list = new ArrayList<>();
+            int len = que.size();
+            
+            while (len > 0) {
+                TreeNode temp = que.poll();
+                list.add(temp.val);
+                
+                if (temp.left != null) que.add(temp.left);
+                if (temp.right != null) que.add(temp.right);
+                len--;
+            }
+            result.add(0,list);
+        }
+    }
+}
+
 ```
 

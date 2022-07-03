@@ -325,7 +325,7 @@ class Solution {
 
 ## Solution 2: Iteration
 
-```
+```java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
