@@ -252,3 +252,90 @@ class Solution {
 }
 ```
 
+
+
+
+
+# 199.Binary Tree Right Side View
+
+Given the `root` of a binary tree, imagine yourself standing on the **right side** of it, return *the values of the nodes you can see ordered from top to bottom*.
+
+ 
+
+**Example 1:**
+
+![img](https://assets.leetcode.com/uploads/2021/02/14/tree.jpg)
+
+```
+Input: root = [1,2,3,null,5,null,4]
+Output: [1,3,4]
+```
+
+**Example 2:**
+
+```
+Input: root = [1,null,3]
+Output: [1,3]
+```
+
+**Example 3:**
+
+```
+Input: root = []
+Output: []
+```
+
+
+
+
+
+## Solution 1: Iteration
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+public List<Integer> rightSideView(TreeNode root) {
+    	List<Integer> list = new ArrayList<>();
+  		Deque<TreeNode> deque = new LinkedList<>();
+  		
+  		if (root == null) {
+				return list;
+      }
+  
+  		deque.offerLast(root);
+  		while (!deque.isEmpty) {
+        int levelSize = deque.size();
+        
+        for (int i = 0; i < levelSize; i++) {
+          TreeNode node = deque.pollFirst();
+          
+          if (node.left != null) {
+            deque.addFisrt(node.left);
+          }
+          if (node.right != null) {
+            deque.addFirst(node.right);
+          }
+          if (i == levelSize - 1) {
+            list.add(node.val);
+          }
+        }
+      }
+  		return list;
+    }
+}
+```
+

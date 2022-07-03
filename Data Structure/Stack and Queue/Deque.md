@@ -61,6 +61,8 @@ class Solution {
 
 ## Solution : Deque
 
+Deque是双端队列，双端队列中的元素可以从两端弹出。
+
 ```java
 // 不会
 ```
