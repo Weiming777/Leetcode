@@ -978,7 +978,7 @@ class Solution {
 
 ## Solution 2: DSF
 
-```
+```java
 /*
 // Definition for a Node.
 class Node {
@@ -1007,29 +1007,27 @@ class Solution {
         if (root == null) return null;
         
         if (root.left != null) {
-            if (root.right != null){
-                root.left.next = root.right;
-            } else if (root.next != null){
-                if (root.next.left != null) {
-                    root.left.next = root.next.left;
-                } else if (root.next.right != null){
-                    root.left.next = root.next.right;
-                }     
-            }
+            if (root.right != null) root.left.next = root.right;
+            else root.left.next = findNext(root);
         }
         
-        if (root.right != null && root.next != null) {
-            if (root.next.left != null) {
-                root.right.next = root.next.left;
-            } else if (root.next.right != null) {
-                root.right.next = root.next.right;
-            }
-        }
+        if (root.right != null)  root.right.next = findNext(root);
         
-        root.left = connect(root.left);
+      
+      	// 注意这里先right后left，因为要先给最右面的结点赋上null值
         root.right = connect(root.right);
+        root.left = connect(root.left);
         
         return root;
+    }
+    
+    public Node findNext(Node root) {
+        while (root.next != null) {
+            root = root.next;
+            if (root.left != null) return root.left;
+            if (root.right != null) return root.right;
+        }
+        return null;
     }
 }
 ```
