@@ -1239,7 +1239,7 @@ class Solution {
         while (!que.isEmpty()) {
             int size = que.size();
           
-          	//关键，需要先自增res。
+          	//关键，需要先自增res
             res++;
             
             for (int i = 0; i < size; i++) {
