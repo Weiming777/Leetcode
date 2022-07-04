@@ -818,3 +818,61 @@ class Solution {
     }
 }
 ```
+
+
+
+
+
+## Solution 3: DFS
+
+```java
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public Node left;
+    public Node right;
+    public Node next;
+
+    public Node() {}
+    
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, Node _left, Node _right, Node _next) {
+        val = _val;
+        left = _left;
+        right = _right;
+        next = _next;
+    }
+};
+*/
+
+class Solution {
+    public Node connect(Node root) {
+        if (root == null) return null;
+        Queue<Node> que = new LinkedList<>();
+        que.offer(root);
+        
+        while(!que.isEmpty()) {
+            int size = que.size();
+            Node next = null;
+            
+            for (int i = 0; i < size; i++) {
+                Node cur = que.poll();
+                cur.next = next;
+                next = cur;
+                
+              	// 这里先遍历右叶子结点，再遍历左叶子结点。应为是先将cur.next = next，而每次while循环都会将next置为空
+              	// 可以理解为，在单个层中，next的赋值是从最右面的结点开始，往左面依次赋值
+                if (cur.right != null) que.offer(cur.right);
+                if (cur.left != null) que.offer(cur.left);
+            }
+        }
+        
+        return root;
+    }
+}
+```
+
