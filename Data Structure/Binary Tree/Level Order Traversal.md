@@ -1140,3 +1140,121 @@ class Solution {
 }
 ```
 
+
+
+
+
+
+
+# 111.Minimum Depth of Binary Tree
+
+Given a binary tree, find its minimum depth.
+
+The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+
+**Note:** A leaf is a node with no children.
+
+ 
+
+**Example 1:**
+
+![img](https://assets.leetcode.com/uploads/2020/10/12/ex_depth.jpg)
+
+```
+Input: root = [3,9,20,null,null,15,7]
+Output: 2
+```
+
+**Example 2:**
+
+```
+Input: root = [2,null,3,null,4,null,5,null,6]
+Output: 5
+```
+
+
+
+
+
+## Solution 1: DFS
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int minDepth(TreeNode root) {
+        if (root == null) return 0;
+        else {
+            int left_height = minDepth(root.left);
+            int right_height = minDepth(root.right);
+          	// 这个return是为了防止树只有一侧有结点
+            return Math.min((left_height == 0) ? right_height : left_height, (right_height == 0) ? left_height : right_height ) + 1;
+        }
+    }
+}
+```
+
+
+
+
+
+## Solution 2: BFS
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int minDepth(TreeNode root) {
+        if (root == null) return 0;
+        Queue<TreeNode> que = new LinkedList<>();
+        que.offer(root);
+        int res = 0;
+        
+        while (!que.isEmpty()) {
+            int size = que.size();
+          
+          	//关键，需要先自增res。
+            res++;
+            
+            for (int i = 0; i < size; i++) {
+                TreeNode node = que.poll();
+                if (node.left != null) que.offer(node.left);
+                if (node.right != null) que.offer(node.right);
+              	// 代表遇到最小的深度了，立刻return
+                if (node.left == null && node.right == null) {
+                    return res;
+                }
+            }
+            
+        }
+        return res;
+    }
+}
+```
+
