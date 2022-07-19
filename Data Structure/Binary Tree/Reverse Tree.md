@@ -95,6 +95,7 @@ class Solution {
         que.offer(root);
         
         while (!que.isEmpty()) {
+          	// 其实这个小交换还是没咋看懂，
             TreeNode cur = que.poll();
             TreeNode temp = cur.left;
             cur.left = cur.right;
