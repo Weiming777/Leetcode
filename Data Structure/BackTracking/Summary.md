@@ -106,7 +106,7 @@ if (s.size() > 12) return result; // 剪枝
 
 在[回溯算法：求子集问题！ (opens new window)](https://programmercarl.com/0078.子集.html)中讲解了子集问题，**在树形结构中子集问题是要收集所有节点的结果，而组合问题是收集叶子节点的结果**。
 
-如图：
+如图： 
 
 ![78.子集](https://img-blog.csdnimg.cn/202011232041348.png)
 
