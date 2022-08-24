@@ -103,6 +103,8 @@ public:
 
 具体操作：按照左边界从小到大排序之后，如果 intervals[i][0] < intervals[i - 1][1] 即intervals[i]左边界 < intervals[i - 1]右边界，则一定有重复，因为intervals[i]的左边界一定是大于等于intervals[i - 1]的左边界。
 
+
+
 如图：
 
 ![56.合并区间](https://img-blog.csdnimg.cn/20201223200632791.png)
