@@ -22,7 +22,7 @@ Output: 1
 
 
 
-## Solution :
+## Solution : Sweep Line
 
 ```java
 class Solution {
