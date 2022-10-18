@@ -38,7 +38,7 @@ class Solution {
           if (newInterval == null || cur[1] < newInterval[0]){
             res.add(cur);
           } else if (cur[0] > newInterval[1]) {
-            res.addAll(List.of(newInterval, cur));
+            res.addAll(ist.of(newInterval, cur));
           } else {
             newInterval[1] = Math.max(newInterval[1], cur[1]);
             newInterval[0] = Math.min(newInterval[0], cur[0]);
