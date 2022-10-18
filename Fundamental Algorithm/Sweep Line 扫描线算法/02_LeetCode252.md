@@ -53,6 +53,6 @@ class Solution {
 
 4 即将compare(a,b)方法重写为这样：若a>b，输出负数；若a<b，输出正数；若a=b，输出0。故，方法体要改写成这样的代码：return -(a-b);（即return b-a;）
 
-5.如果是二维数组，则a[0] 表示第0列，a[1]表示第1列。
+5.如果是二维数组，则a[0] 表示第0列的数，a[1]表示第1列的数。
 
 原文链接：https://blog.csdn.net/GsxxInCsdn/article/details/122147184
