@@ -65,6 +65,7 @@ class Solution {
             }
         }
         
+      	// peek 是看，poll是拿出来
         Interval cur = list.poll();
         while(!list.isEmpty()) {
             if (cur.end >= list.peek().start) {
